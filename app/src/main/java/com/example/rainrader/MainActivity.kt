@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
             startActivity(intent)
         }
 
-        val imageView = findViewById<ImageView>(R.id.imageView33)
-        val imageView1 = findViewById<ImageView>(R.id.imageView12)
+        //val imageView = findViewById<ImageView>(R.id.imageView33)
+        //val imageView1 = findViewById<ImageView>(R.id.imageView12)
         val imageView2 = findViewById<ImageView>(R.id.imageView2)
         val textView: TextView = findViewById(R.id.textView1)
 

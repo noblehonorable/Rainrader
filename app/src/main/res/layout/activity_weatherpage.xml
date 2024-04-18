@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -25,8 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
 
             <!-- Location TextView -->
             <LinearLayout
@@ -62,6 +59,7 @@
                     android:src="@drawable/notification" />
             </LinearLayout>
 
+            <!-- Location Name TextView -->
             <TextView
                 android:id="@+id/location"
                 android:layout_width="match_parent"
@@ -73,7 +71,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <!-- Current date TextView -->
+            <!-- Current Date TextView -->
             <TextView
                 android:id="@+id/current_date"
                 android:layout_width="match_parent"
@@ -99,27 +97,43 @@
                     android:layout_gravity="left"
                     app:srcCompat="@drawable/sunny_girl" />
 
-
-                <TextView
-                    android:id="@+id/temperatureTextView"
+                <!-- LinearLayout for temperature, rain, and wind description -->
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="9°"
-                    android:textColor="@color/black"
-                    android:textSize="100sp"
-                    android:textStyle="bold"
-                    android:layout_marginStart="8dp" />
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
 
-                <TextView
-                    android:id="@+id/wind_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Wind"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    <!-- TextView for temperature -->
+                    <TextView
+                        android:id="@+id/temperatureTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="9 C"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
 
+                    <!-- TextView for rain description -->
+                    <TextView
+                        android:id="@+id/rain_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MM"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
+                    <!-- TextView for wind description -->
+                    <TextView
+                        android:id="@+id/wind_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wind"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- TextView for weather condition description -->
@@ -151,43 +165,46 @@
 
             <!-- TextView for weather information -->
             <TextView
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
+                android:id="@+id/weather_info_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
-                android:background="@drawable/weather_corners"
                 android:text="Weather information"
+                android:textSize="17sp"
+                android:layout_margin="10sp"
                 android:textAlignment="center"
-                android:textColor="#FFC8DD"
-                android:textStyle="bold" />
-
-            <!-- TextView for weather message -->
-            <TextView
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="13dp"
-                android:background="@drawable/weather_corners"
-                android:text="@string/weathermsg"
-                android:textAlignment="center"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
+            <!-- RecyclerView for hourly weather information -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weatherRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:clipToPadding="false"
+                android:background="@drawable/weather_corners"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_hourly_weather" />
+
+            <!-- LinearLayout for "Today" and "Next 3 festival days" labels -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/today_weather_text"
-                    android:textStyle="bold"
-                    android:textSize="19sp"
-                    android:layout_margin="10sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textSize="19sp"
+                    android:layout_margin="10sp"
                     android:textColor="@color/black"
                     android:text="Today" />
 
@@ -196,22 +213,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_margin="10sp"
                     android:textStyle="bold"
                     android:gravity="right"
                     android:textColor="@color/black"
-                    android:text="Next 3 festival days" />
+                    android:text="Next 3 festival days"
+                    android:layout_margin="10sp"/>
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/view1"
-                android:layout_width="340dp"
-                android:layout_height="90dp"
-                android:layout_gravity="center"
-                android:clipToPadding="false"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:background="@drawable/weather_corners"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
